@@ -74,12 +74,10 @@
 			if (position==treasureLocation){
 				document.getElementById(chest_id).src = "treasure.png"
 				score+=1;
-			}
-			else{
+			}else{
 				document.getElementById(chest_id).src = "echest.png"
 			}
 			score += 1;
-
 			chestCount+=1;
 			document.getElementById("chests").innerHTML = "Number of chests checked is "+chestCount;
 			document.getElementById("score").innerHTML = "Your score  is ::::: " +score;
@@ -96,8 +94,7 @@
 			let doc = document.getElementById("help")
 			if(treasure_col == last_check_col && treasure_row == last_check_row){
 				doc.innerHTML = "You already won, NO help Available"
-			}
-			else if(treasure_col == last_check_col){
+			}else if(treasure_col == last_check_col){
 				score += 2;
 				if(treasure_row<last_check_row){
 					doc.innerHTML = "UP"
@@ -105,8 +102,7 @@
 				if(treasure_row>last_check_row){
 					doc.innerHTML = "DOWN"
 				}
-			}
-			else if(treasure_row == last_check_row){
+			}else if(treasure_row == last_check_row){
 				score += 2;
 				if(treasure_col < last_check_col){
 					doc.innerHTML = "Left"
@@ -114,13 +110,10 @@
 				if(treasure_col>last_check_col){
 					doc.innerHTML = "Right"
 				}
-			}
-			else{
+			}else{
 				doc.innerHTML = "Sorry NOOOOOOOOOOOOO Help Available"
 			}
-			
 			document.getElementById("score").innerHTML = "Your score  is ::::: " +score;
-
 		}
 	</script>
 
