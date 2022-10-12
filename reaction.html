@@ -12,12 +12,12 @@
 <body>
 
   <h2>Reason Adhikari Reaction Timer</h2>
-  <div id="target">Your time</div>
-  <div id="countdown">Count</div>
+  <div id="target" >Your time </div>
+  <div id="countdown">Count </div>
 
   <button type="button"
   class="btn btn-primary"
-  onclick="buttonPress()">
+  onclick="startTime()">
   Start Timer</button>
 
   <button type="button"
@@ -31,6 +31,24 @@
   function recordReact(){
 	myTime = Date.now();
 	console.log("React button pressed time: " + myTime)
+  }
+  function startTime(){
+	for(let i=0; i<4; i++){
+		setTimeout(function(){
+			console.log("Values after " + i)
+			document.getElementById("countdown").innerHTML = "Count " + i;
+		}, (3-i)*1000)
+	}
+	setTimeout(function(){
+		if(myTime==undefined){
+			document.getElementById("target").innerHTML = "Too Slow"
+		}else{
+			let buttonTime = Date.now();
+			let diff = buttonTime - myTime;
+			document.getElementById("target").innerHTML = "Time was " + diff
+		}
+
+	}, 3000)
   }
 
 //   function buttonPress1() {
