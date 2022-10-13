@@ -20,6 +20,16 @@
 					background-color: green;
 				}
 				}
+			.btn{
+				box-sizing: 100px;
+				color: white;
+				background-color: rgb(67, 15, 212);
+				padding: 2px 2px;
+				margin: 2px;
+				height: 25px;
+				border: 1px solid black;
+				border-radius: 10px;
+			}
 		</style>
 	</head>
 
@@ -36,23 +46,44 @@
 	</div>
 	
 	<br>
-	<button onclick="makeNewDiv()">Add Value</button>
-	
-	
-</body>
-<script>
-	function makeNewDiv(){
-		/* make the div and its text */
-		let element = document.createElement("div")
-		let newElement = document.getElementById("input_item").value
-		element.innerHTML = newElement
-		element.className = "cycler"
-		element.style.color = "orange"
+	<button class="btn" onclick="makeNewDiv()">Add Value</button>	
+	<br>
+	<input class="btn" type="button" value="Get" onclick="get()">
+	<input class = "btn" type="button" value="Spin" onclick = "spin()">
 
-		/* add it to the container */
-		let container = document.getElementById('target')
-		container.appendChild(element)
-		
-	}
-</script>
+	<script>
+		function makeNewDiv(){
+			/* make the div and its text */
+			let element = document.createElement("div")
+			let newElement = document.getElementById("input_item").value
+			element.innerHTML = newElement
+			element.className = "cycler"
+			element.style.color = "orange"
+			/* add it to the container */
+			let container = document.getElementById('target')
+			container.appendChild(element)
+		}
+		function get(){
+			let cyclerItems = document.getElementsByClassName("cycler")
+			console.log(cyclerItems)
+			let length_elements = cyclerItems.length
+			if (length_elements>0){
+				cyclerItems[length_elements-1].remove()
+			}
+		}
+		function spin(){
+			let cyclerItems = document.getElementsByClassName("cycler")
+			let length_elements = cyclerItems.length
+			if(length_elements==0 || length_elements==1){
+				console.log("Not enough elements to spin")
+			}else{
+				let removedItem = cyclerItems[length_elements-1]
+				cyclerItems[length_elements-1].remove()
+				console.log(removedItem)
+				let container_div = document.getElementById("target")
+				container_div.insertBefore(removedItem,container_div.firstChild)
+			}
+		}
+	</script>
+</body>
 </html>	
