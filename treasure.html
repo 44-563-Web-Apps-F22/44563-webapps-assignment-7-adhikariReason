@@ -45,8 +45,8 @@
 	<div class="row ">
 		<div class="col" onclick="check(15)" ><img id="chest15" src="tchest.png" height="100" width="100"></div>
 		<div class="col" onclick="check(16)" ><img id="chest16" src="tchest.png" height="100" width="100"></div>
-		<div  class="col" onclick="check(17)"><img id="chest17"  src="tchest.png" height="100" width="100"></div>
-		<div class="col" onclick="check(18)" ><img id="chest18"  src="tchest.png" height="100" width="100"></div>
+		<div class="col" onclick="check(17)" ><img id="chest17"  src="tchest.png" height="100" width="100"></div>
+		<div class="col" onclick="check(18)" ><img id="chest18" src="tchest.png" height="100" width="100"></div>
 		<div class="col" onclick="check(19)" ><img id="chest19" src="tchest.png" height="100" width="100"></div>
 	</div>
 	<div class="row ">
@@ -66,10 +66,19 @@
 		let chestCount =0;
 		let score =0;
 		let lastCheck =12;
-		let treasureLocation = 18;
+		let treasureLocation = rand_treasure_loc();
+		function rand_treasure_loc(){
+			let num = Math.floor(Math.random()*25)
+			if (num==12){
+				num = rand_treasure_loc()
+				return num;
+			}
+			return num
+		}
 		
 		function check(position){
 			// console.log("Chest Clicked\nPosition: " + position + "	ID: " +ids[position])
+			console.log(treasureLocation);
 			let chest_id = ids[position];
 			if (position==treasureLocation){
 				document.getElementById(chest_id).src = "treasure.png"

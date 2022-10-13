@@ -28,16 +28,21 @@
   
   <script> 
   let myTime = undefined;
+  function rand_count_time(){
+			let num = Math.floor(Math.random()*8 + 3)
+			return num;
+  }
   function recordReact(){
 	myTime = Date.now();
 	console.log("React button pressed time: " + myTime)
   }
   function startTime(){
-	for(let i=0; i<4; i++){
+	let count_start = rand_count_time()
+	for(let i=0; i<count_start; i++){
 		setTimeout(function(){
 			console.log("Values after " + i)
 			document.getElementById("countdown").innerHTML = "Count " + i;
-		}, (3-i)*1000)
+		}, (count_start-i)*1000)
 	}
 	setTimeout(function(){
 		if(myTime==undefined){
